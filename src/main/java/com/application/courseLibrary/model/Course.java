@@ -1,6 +1,7 @@
 package com.application.courseLibrary.model;
 
 import com.application.courseLibrary.dto.CourseRegistrationData;
+import com.application.courseLibrary.dto.IdCourse;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,14 +25,19 @@ public class Course {
     private String name;
     private String modality;
     private LocalDate endDate;
-    @OneToMany
-    @JoinColumn(name = "fk_id_Course", referencedColumnName = "id")
+    @OneToMany(
+            mappedBy = "course",
+            orphanRemoval = true
+    )
     private List<Topic> listTopic;
+
+    public Course (IdCourse idCourse){
+        this.id = idCourse.id();
+    }
 
     public Course(CourseRegistrationData courseRegistrationData) {
         this.name = courseRegistrationData.name();
         this.modality = courseRegistrationData.modality();
         this.endDate = courseRegistrationData.endDate();
-        this.listTopic = courseRegistrationData.listTopics();
     }
 }

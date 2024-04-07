@@ -15,8 +15,7 @@ public record CourseRegistrationData(
         @NotBlank
         String modality,
         @NotNull
-        LocalDate endDate,
-        List<Topic> listTopics
+        LocalDate endDate
 
 ) {
 }

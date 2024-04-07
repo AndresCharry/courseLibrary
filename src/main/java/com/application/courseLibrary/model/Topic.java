@@ -20,9 +20,13 @@ public class Topic {
     private Long id;
     private String name;
     private String description;
+    @ManyToOne
+    @JoinColumn(name = "fk_idCourse")
+    private Course course;
 
     public Topic(TopicRegistrationData topicRegistrationData) {
         this.name = topicRegistrationData.name();
         this.description = topicRegistrationData.description();
+        this.course = new Course(topicRegistrationData.course());
     }
 }

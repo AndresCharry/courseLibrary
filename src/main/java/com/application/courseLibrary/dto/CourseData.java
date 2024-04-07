@@ -11,10 +11,9 @@ public record CourseData(
         Long id,
         String name,
         String modality,
-        LocalDate endDate,
-        List<Topic> listTopics
+        LocalDate endDate
 ) {
     public CourseData (Course course){
-        this(course.getId(),course.getName(),course.getModality(),course.getEndDate(),course.getListTopic());
+        this(course.getId(),course.getName(),course.getModality(),course.getEndDate());
     }
 }
