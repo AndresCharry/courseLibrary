@@ -1,5 +1,6 @@
 package com.application.courseLibrary.model;
 
+import com.application.courseLibrary.dto.TopicData;
 import com.application.courseLibrary.dto.TopicRegistrationData;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -28,5 +29,11 @@ public class Topic {
         this.name = topicRegistrationData.name();
         this.description = topicRegistrationData.description();
         this.course = new Course(topicRegistrationData.course());
+    }
+
+    public void update(TopicData topicData) {
+        this.name = topicData.name();
+        this.description = topicData.description();
+        this.course = new Course(topicData.course());
     }
 }

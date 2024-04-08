@@ -42,4 +42,11 @@ public class TopicService implements ITopicService {
 
         return new PageImpl<>(listTopics, pageable, listTopics.size());
     }
+
+    @Override
+    public TopicData updateTopic(TopicData topicData) {
+        Topic topic = topicRepository.getReferenceById(topicData.id());
+        topic.update(topicData);
+        return getTopic(topic.getId());
+    }
 }

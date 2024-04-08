@@ -35,4 +35,11 @@ public class TopicController {
         return ResponseEntity.ok(topicService.getTopics(id,pageable));
     }
 
+    @PutMapping("/edit")
+    @Transactional
+    public ResponseEntity<TopicData> updateTopic
+            (@RequestBody @Valid TopicData topicData) {
+        return ResponseEntity.ok(topicService.updateTopic(topicData));
+    }
+
 }

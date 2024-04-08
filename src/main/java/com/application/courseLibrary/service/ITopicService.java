@@ -9,4 +9,5 @@ public interface ITopicService {
     public Long addTopic(TopicRegistrationData topicRegistrationData);
     public TopicData getTopic(Long id);
     public Page<TopicDataWithoutCourse> getTopics(Long id, Pageable pageable);
+    public TopicData updateTopic(TopicData topicData);
 }
