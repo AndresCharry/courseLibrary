@@ -47,4 +47,11 @@ public class CourseService implements ICourseService {
                                                        .toList();
         return new PageImpl<>(listCourses, pageable, listCourses.size());
     }
+
+    @Override
+    public CourseData updateCourse(CourseData courseData) {
+        Course course = courseRepository.getReferenceById(courseData.id());
+        course.update(courseData);
+        return getCourse(course.getId());
+    }
 }

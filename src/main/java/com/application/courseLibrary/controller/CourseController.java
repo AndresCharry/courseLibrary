@@ -42,4 +42,11 @@ public class CourseController {
                                                                     @RequestParam String word) {
         return ResponseEntity.ok(courseService.getCoursesPageWithWord(pageable,word));
     }
+
+    @PutMapping("/edit")
+    @Transactional
+    public ResponseEntity<CourseData> updateCourse (@RequestBody @Valid
+                                                    CourseData courseData) {
+        return ResponseEntity.ok(courseService.updateCourse(courseData));
+    }
 }

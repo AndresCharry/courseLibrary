@@ -9,5 +9,6 @@ public interface ICourseService {
     public Long addCourse(CourseRegistrationData courseRegistrationData);
     public CourseData getCourse(Long id);
     public Page<CourseData> getCoursesPage (Pageable pageable);
-    Page<CourseData> getCoursesPageWithWord(Pageable pageable, String word);
+    public Page<CourseData> getCoursesPageWithWord(Pageable pageable, String word);
+    public CourseData updateCourse(CourseData courseData);
 }

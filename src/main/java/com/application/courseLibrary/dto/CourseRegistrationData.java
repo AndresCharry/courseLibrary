@@ -8,10 +8,8 @@ import java.time.LocalDate;
 import java.util.List;
 
 public record CourseRegistrationData(
-        @NotNull
         @NotBlank
         String name,
-        @NotNull
         @NotBlank
         String modality,
         @NotNull

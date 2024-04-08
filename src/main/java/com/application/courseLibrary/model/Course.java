@@ -1,5 +1,6 @@
 package com.application.courseLibrary.model;
 
+import com.application.courseLibrary.dto.CourseData;
 import com.application.courseLibrary.dto.CourseRegistrationData;
 import com.application.courseLibrary.dto.IdCourse;
 import jakarta.persistence.*;
@@ -39,5 +40,12 @@ public class Course {
         this.name = courseRegistrationData.name();
         this.modality = courseRegistrationData.modality();
         this.endDate = courseRegistrationData.endDate();
+    }
+
+    public void update(CourseData courseData) {
+        this.id = courseData.id();
+        this.name = courseData.name();
+        this.modality = courseData.modality();
+        this.endDate = courseData.endDate();
     }
 }
