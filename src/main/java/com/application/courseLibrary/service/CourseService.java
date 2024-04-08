@@ -38,4 +38,13 @@ public class CourseService implements ICourseService {
         long listCourseSize = listCourses.size();
         return  new PageImpl<>(listCourses, pageable, listCourseSize);
     }
+
+    @Override
+    public Page<CourseData> getCoursesPageWithWord(Pageable pageable, String word) {
+        List<CourseData> listCourses = courseRepository.findAllCoursesWithWord(word)
+                                                       .stream()
+                                                       .map(CourseData::new)
+                                                       .toList();
+        return new PageImpl<>(listCourses, pageable, listCourses.size());
+    }
 }

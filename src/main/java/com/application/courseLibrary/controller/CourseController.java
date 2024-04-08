@@ -21,21 +21,25 @@ public class CourseController {
 
     @PostMapping("/add")
     @Transactional
-    public ResponseEntity<CourseData> addCourse(@RequestBody @Valid CourseRegistrationData courseRegistrationData) {
+    public ResponseEntity<CourseData> addCourse (@RequestBody @Valid CourseRegistrationData courseRegistrationData) {
         Long id =  courseService.addCourse(courseRegistrationData);
         return ResponseEntity.ok(getCourseById(id).getBody());
     }
 
     @GetMapping("/get/{id}")
-    @Transactional
-    public ResponseEntity<CourseData> getCourseById(@PathVariable Long id) {
+    public ResponseEntity<CourseData> getCourseById (@PathVariable Long id) {
         CourseData courseData = courseService.getCourse(id);
         return ResponseEntity.ok(courseData);
     }
 
-    @GetMapping("/get")
-    @Transactional
-    public ResponseEntity<Page<CourseData>> getCoursesPage(@PageableDefault Pageable pageable) {
+    @GetMapping("/getPage")
+    public ResponseEntity<Page<CourseData>> getCoursesPage (@PageableDefault Pageable pageable) {
         return ResponseEntity.ok(courseService.getCoursesPage(pageable));
+    }
+
+    @GetMapping("/getPageWithWord")
+    public ResponseEntity<Page<CourseData>> getCoursesPageWithWork (@PageableDefault Pageable pageable,
+                                                                    @RequestParam String word) {
+        return ResponseEntity.ok(courseService.getCoursesPageWithWord(pageable,word));
     }
 }
