@@ -1,12 +1,12 @@
 package com.application.courseLibrary.controller;
 
-import com.application.courseLibrary.dto.TopicData;
-import com.application.courseLibrary.dto.TopicRegistrationData;
+import com.application.courseLibrary.dto.*;
 import com.application.courseLibrary.service.ITopicService;
-import com.application.courseLibrary.service.TopicService;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,4 +28,11 @@ public class TopicController {
     public ResponseEntity<TopicData> getTopic(@PathVariable Long id) {
         return ResponseEntity.ok(topicService.getTopic(id));
     }
+
+
+    @GetMapping("/getTopics/{id}")
+    public ResponseEntity<Page<TopicDataWithoutCourse>> getTopics(@PathVariable Long id, Pageable pageable) {
+        return ResponseEntity.ok(topicService.getTopics(id,pageable));
+    }
+
 }
